@@ -98,7 +98,8 @@ def main():
 
     # Start the bot with webhook
     updater.start_webhook(listen="0.0.0.0", port=int(os.environ.get('PORT', 5000)), url_path=BOT_TOKEN)
-    updater.bot.set_webhook(f'https://your_render_app_url/{BOT_TOKEN}')  # Replace with your Render app URL
+    updater.bot.set_webhook(f'https://Crunchyroll-Bot-SikeNez.onrender.com/7879690371:AAHGgAVoLe92D-r3vTs4I7oUGAcwDaG6p70
+')  # Replace with your Render app URL
 
     # Start Flask app
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
