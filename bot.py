@@ -1,4 +1,5 @@
 import logging
+import os
 from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from time import time
@@ -9,7 +10,7 @@ from flask import Flask, request
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 # Set your bot token and other variables
-BOT_TOKEN = 'YOUR_BOT_TOKEN'
+BOT_TOKEN = '7879690371:AAHGgAVoLe92D-r3vTs4I7oUGAcwDaG6p70'
 FORCE_SUB_CHANNEL = '@SikeNezCrunhy'  # Use the username, not the full URL
 COOLDOWN = 7200  # 2 hours in seconds
 
@@ -95,12 +96,13 @@ def main():
     dp.add_handler(CommandHandler("load", load_account))
     dp.add_handler(CommandHandler("addadmin", add_admin))
 
-    # Set the webhook
+    # Start the bot with webhook
     updater.start_webhook(listen="0.0.0.0", port=int(os.environ.get('PORT', 5000)), url_path=BOT_TOKEN)
     updater.bot.set_webhook(f'https://your_render_app_url/{BOT_TOKEN}')  # Replace with your Render app URL
 
-    updater.idle()
+    # Start Flask app
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
 
 if __name__ == '__main__':
     main()
-              
+            
