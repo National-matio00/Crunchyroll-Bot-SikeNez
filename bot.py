@@ -1,5 +1,5 @@
 import logging
-from telegram import Update, Bot
+from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 from time import time
 from functools import wraps
@@ -17,8 +17,8 @@ user_cooldowns = {}
 
 # Check for forced subscription
 def is_user_subscribed(user_id):
-    # Here you can check if the user is subscribed to the channel
-    return True  # Replace with actual check if needed
+    # Placeholder for checking user subscription
+    return True  # Implement actual check if needed
 
 # Cooldown decorator
 def cooldown_required(func):
@@ -57,7 +57,7 @@ def load_account(update: Update, context: CallbackContext):
     update.message.reply_text(f"Account loaded: {account}")
 
 def main():
-    updater = Updater(BOT_TOKEN)
+    updater = Updater(BOT_TOKEN, use_context=True)
     dp = updater.dispatcher
 
     dp.add_handler(CommandHandler("GetCrunchyroll", get_crunchyroll))
